@@ -24,7 +24,7 @@
     const questions = [
        ["Which color is the sky?(lie on this one )", ["blue", "red"]],
        ["2 + 2?(say true) )", [1,2,3,4,5]],
-       ["how old are you?(lie on this one)", [1,2,3,4,5]],
+       ["how old are you?(lie on this one)", [23,22,30,24,25]],
        ["Which color is the sky?(true on this one )", ["blue", "red"]],
         ["2 + 2?(say lie) )", [1,2,3,4,5]],
          ["how old are you ?(say true) )", [20,23,24,22,25]]
@@ -33,7 +33,11 @@
        ["how match you like icream", [1,2,3,4]],
        ["say trueth how match you like pizza",[1,2,3,4,5]],
       ["Which color is the sky?", ["blue", "red"]],
-      ["How many days in a week?", [1,2,3,4,5,6,7]]
+      ["How many days in a week?", [1,2,3,4,5,6,7]],
+       ["How old are you ?", [20,22,23,24,25,26,27]],
+        ["rate your painting skills?", [1,2,3,4,5]]
+
+
     ];
 
     let current = 0;
@@ -42,6 +46,16 @@
     let cords = [
         [[1], [1]]
       [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+      [[], []],
+
       [[], []],
       [[], []],
       [[], []],
@@ -95,6 +109,7 @@ document.addEventListener("mousemove", e => {
          const optionsDiv = document.getElementById("options");
       optionsDiv.innerHTML = "";
      index = current
+     console.log(current)
       console.log(questions[index][1])
       for (let i = 0; i <= questions[index][1].length - 1; i++) {
         const label = document.createElement("label");
