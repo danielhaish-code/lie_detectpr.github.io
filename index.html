@@ -25,6 +25,11 @@
        ["Which color is the sky?(lie on this one )", ["blue", "red"]],
        ["2 + 2?(say true) )", [1,2,3,4,5]],
        ["how old are you?(lie on this one)", [1,2,3,4,5]],
+       ["Which color is the sky?(true on this one )", ["blue", "red"]],
+        ["2 + 2?(say lie) )", [1,2,3,4,5]],
+         ["how old are you ?(say true) )", [20,23,24,22,25]]
+
+
        ["how match you like icream", [1,2,3,4]],
        ["say trueth how match you like pizza",[1,2,3,4,5]],
       ["Which color is the sky?", ["blue", "red"]],
@@ -56,19 +61,12 @@
       timeLeft = 10;
       document.getElementById("timer").textContent = `Time left: ${timeLeft}s`;
       countdown = setInterval(updateTimer, 1000);
-
+                 
       // Show question
       document.getElementById("question").textContent = questions[index][0];
-
+      
       // Show options (always 1–5)
-      const optionsDiv = document.getElementById("options");
-      optionsDiv.innerHTML = "";
-      console.log(questions[index][1])
-      for (let i = 0; i <= questions[index][1].length - 1; i++) {
-        const label = document.createElement("label");
-        label.innerHTML = `<input type="radio" name="q${index}" value="${ questions[index][1][i]}"> ${questions[index][1][i]}`;
-        optionsDiv.appendChild(label);
-    }
+     
    
   }
 
@@ -93,10 +91,25 @@ document.addEventListener("mousemove", e => {
       timeLeft--;
       cords[current][1].push([mouseX, mouseY])
       document.getElementById("timer").textContent = `Time left: ${timeLeft}s`;
+      if(timeLeft < 6){
+         const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+     index = current
+      console.log(questions[index][1])
+      for (let i = 0; i <= questions[index][1].length - 1; i++) {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="q${index}" value="${ questions[index][1][i]}"> ${questions[index][1][i]}`;
+        optionsDiv.appendChild(label);
+    }
+      }
       if (timeLeft <= 0) {
         clearInterval(countdown);
         nextQuestion();
-      }
+         const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+    }
+
+      
     }
 
     function nextQuestion() {
